@@ -14,7 +14,7 @@ A simple Makefile template to cross-compile C programs for Intel Galileo.
 3. Open console, then type:
 ```
 $ cd /where/you/extracted/the/archive/arduino-1.5.3
-$ cd harware/tools/sysroots
+$ cd hardware/tools/sysroots
 $ sudo mkdir -p /opt/cross/i586-poky-linux-uclibc-x-tools
 $ sudo cp -R i586-poky-linux-uclibc/* /opt/cross/i586-poky-linux-uclibc-x-tools/
 $ sudo cp -R i586-pokysdk-linux/* /opt/cross/i586-poky-linux-uclibc-x-tools/
