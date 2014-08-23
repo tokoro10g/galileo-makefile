@@ -15,9 +15,9 @@ A simple Makefile template to cross-compile C programs for Intel Galileo.
 ```
 $ cd /where/you/extracted/the/archive/arduino-1.5.3
 $ cd hardware/tools/sysroots
-$ sudo mkdir -p /opt/cross/i586-poky-linux-uclibc-x-tools
-$ sudo cp -R i586-poky-linux-uclibc/* /opt/cross/i586-poky-linux-uclibc-x-tools/
-$ sudo cp -R i586-pokysdk-linux/* /opt/cross/i586-poky-linux-uclibc-x-tools/
+$ sudo mkdir -p /opt/clanton-tiny/1.4.2/sysroots
+$ sudo cp -R i586-poky-linux-uclibc /opt/clanton-tiny/1.4.2/sysroots/
+$ sudo cp -R x86_64-pokysdk-linux /opt/clanton-tiny/1.4.2/sysroots/
 ```
 It copies cross devtools from Arduino IDE.
 
@@ -50,21 +50,11 @@ int main(int argc, char const* argv[])
 
 ```
 $ make
-/opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/i586-poky-linux-uclibc-g++ -O2 -pipe -g -feliminate-unused-debug-types
- -fpermissive -Wall -I /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../include
- -I /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../include/c++
- -I /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../lib/i586-poky-linux-uclibc/gcc/i586-poky-linux-uclibc/4.7.2/include
- -m32 -march=i586 --sysroot=/opt/cross/i586-poky-linux-uclibc-x-tools -c -o helloworld.o helloworld.c
-/opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/i586-poky-linux-uclibc-g++ -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed
- -L /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../../lib
- -L /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../lib
- -L /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../lib/i586-poky-linux-uclibc/4.7.2
- -L /opt/cross/i586-poky-linux-uclibc-x-tools/usr/bin/i586-poky-linux-uclibc/../lib/i586-poky-linux-uclibc/4.7.2
- -lstdc++ -m32 -march=i586 --sysroot=/opt/cross/i586-poky-linux-uclibc-x-tools helloworld.o -o helloworld
+/opt/clanton-tiny/1.4.2/sysroots/x86_64-pokysdk-linux//usr/bin/i586-poky-linux-uclibc/i586-poky-linux-uclibc-g++ -O2 -pipe -g -feliminate-unused-debug-types -fpermissive -Wall -I /opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc//usr/include -I /opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc//usr/include/c++ -I /opt/clanton-tiny/1.4.2/sysroots/x86_64-pokysdk-linux//usr/lib/i586-poky-linux-uclibc/gcc/i586-poky-linux-uclibc/4.7.2/include   -m32 -march=i586 --sysroot=/opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc/ -c -o helloworld.o helloworld.c
+/opt/clanton-tiny/1.4.2/sysroots/x86_64-pokysdk-linux//usr/bin/i586-poky-linux-uclibc/i586-poky-linux-uclibc-g++ -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed -L /opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc//lib -L /opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc//usr/lib -L /opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc//usr/lib/i586-poky-linux-uclibc/4.7.2 -lstdc++ -m32 -march=i586 --sysroot=/opt/clanton-tiny/1.4.2/sysroots/i586-poky-linux-uclibc/ helloworld.o -o helloworld
 
 $ file helloworld
-helloworld: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs),
- BuildID[sha1]=0x78594d3015aacfc8322039aa54927e3e6d9b4561, not stripped
+helloworld: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), BuildID[sha1]=bf9bf056d126d4c6b3c5f5565d2b398136d2afc3, not stripped
 ```
 
 Copy the binary to your Galileo, then
